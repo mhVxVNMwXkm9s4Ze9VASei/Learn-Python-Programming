@@ -6,7 +6,7 @@ from copy import deepcopy
 from marshmallow import Schema, fields, pre_load
 from marshmallow.validate import Length, Range
 
-class UserSchema(schema):
+class UserSchema(Schema):
 	"""Represent a *valid* user."""
 
 	email = fields.Email(required = True)
@@ -55,7 +55,7 @@ def write_csv(filename, users):
 	fieldnames = ['email', 'name', 'age', 'role']
 
 	with open(filename, 'w', newline = '') as csvfile:
-		write = csv.DictWriter(csvfile, fieldnames = fieldnames)
+		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
 		writer.writeheader()
 
 		for user in users:

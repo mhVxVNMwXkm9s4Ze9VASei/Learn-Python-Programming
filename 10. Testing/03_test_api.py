@@ -135,8 +135,8 @@ class TestExport:
 
 		assert(
 			'email,name,age,role\n'
-			'minimal@example.com,Primus Minimus, 18,\n'
-			'full@example.com,Maximus Plenus, 65,emperor\n'
+			'minimal@example.com,Primus Minimus,18,\n'
+			'full@example.com,Maximus Plenus,65,emperor\n'
 		) == text
 
 	def test_export_quoting(self, min_user, csv_file):
