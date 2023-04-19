@@ -1,0 +1,11 @@
+[04/18/2023 10:58:19 PM] INFO: Starting to process 'mylist'
+[04/18/2023 10:58:19 PM] DEBUG: Value at position 0 is 1
+[04/18/2023 10:58:19 PM] DEBUG: Value at position 1 is 2
+[04/18/2023 10:58:19 PM] DEBUG: Value at position 2 is 3
+[04/18/2023 10:58:19 PM] ERROR: Faulty position: 3
+Traceback (most recent call last):
+  File "C:\Users\pc\Documents\GitHub\Learn-Python-Programming\11. Debugging and Profiling\05_log.py", line 19, in <module>
+    mylist[position]
+    ~~~~~~^^^^^^^^^^
+IndexError: list index out of range
+[04/18/2023 10:58:19 PM] INFO: Done processing 'mylist.'
