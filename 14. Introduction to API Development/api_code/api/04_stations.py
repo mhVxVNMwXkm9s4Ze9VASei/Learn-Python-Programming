@@ -60,3 +60,33 @@ def create_station(
 			detail = f"Station {station.code} already exists.",
 		)
 	return crud.create(db = db, station = station)
+
+@router.put("/{station_id}", tags = ["Stations"])
+def update_station(
+	station_id: int,
+	station: StationUpdate,
+	db: Session = Depends(get_db),
+):
+	db_station = crud.get_station(db = db, station_id = station_id)
+	if db_station is None:
+		raise HTTPException(
+			status_code = 404,
+			detail = f"Station {station_id} not found.",
+		)
+	else:
+		crud.update_station(
+			db = db,
+			station = station,
+			station_id = station_id
+		)
+		return Response(status_code = status.HTTP_204_NO_CONTENT)
+
+@router.delete("/{station_id}", tags = ["Stations"])
+def delete_station(
+	station_id: int,
+	db: Session = Depends(get_db)
+):
+	row_count = crud.delete_station(db = db, station_id = station_id)
+	if row_count:
+		return Response(status_code = status.HTTP_204_NO_CONTENT)
+	return Response(status_code = status.HTTP_404_NOT_FOUND)

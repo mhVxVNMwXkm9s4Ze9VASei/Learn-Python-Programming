@@ -13,3 +13,13 @@ class Station(StationBase):
 
 class StationCreate(StationBase):
 	pass
+
+from typing import Optional
+class StationUpdate(StationBase):
+	code: Optional[str] = None
+	country: Optional[str] = None
+	city: Optional[str] = None
+
+class Auth(BaseModel):
+	email: str
+	password: str

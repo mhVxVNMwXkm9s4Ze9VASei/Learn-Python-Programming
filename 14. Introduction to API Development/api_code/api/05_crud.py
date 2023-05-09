@@ -27,3 +27,24 @@ def create_station(
 	db.refresh(db_station)
 	return db_station
 
+def update_station(
+		db: Session,
+		station: schemas.StationUpdate,
+		station_id: int
+):
+	stm = (
+		update(models.Station)
+			.where(models.Station.id == station_id)
+			.values(station.dict(exclude_unset = True))
+	)
+	result = db.execute(stm)
+	db.commit()
+	return result.rowcount
+
+def delete_station(db: Session, station_id: int):
+	stm = delete(models.Station).where(
+		models.Station.id == station_id
+	)
+	result = db.execute(stm)
+	db.commit()
+	return result.rowcount
